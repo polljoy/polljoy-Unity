@@ -27,7 +27,7 @@ You can setup and manage all your polls through a web interface here https://adm
 
 1. Download `Dist` folder to your local drive
 2. Import polljoy_SDK.unitypackage
-3. Import NGUI package (if you have not. polljoy SDK requires NGUI)
+3. Import NGUI package (if you have not. polljoy SDK requires NGUI 2)
 
 ### Implement polljoy in Project
 
