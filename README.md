@@ -40,11 +40,24 @@ Each time you call `startSession`, the SDK will increase the session count by 1.
 
 Once the session is started, SDK will cache all app settings including the default image, border image and button image (if any) that you have setup in the [admin panel](https://admin.polljoy.com). After caching, there will be no operation until you request polls from polljoy service.
 
-###Get poll
+###Get poll (simple version)
 After you start the session, you can get polls any time and place you want!
 
 In your program logic, at the point you want to get the poll, call:
 
+  ``` c#
+      Polljoy.getPoll();
+  // use this if you don't need to handle callbacks from polljoy
+  // this will auto show the polls when all polls are ready
+  ```
+  OR
+  ``` c#
+    Polljoy.getPoll(delegate);
+  // if you want to handle callbacks from polljoy
+  ```
+`Note: these are simple version if you will only select polls based on session, timeSinceInstall and platform, or not have any seletion criteria.  If you want more than these, use the full version that follows.
+
+###Get poll (full version)
  ``` c#
  // ...
    Polljoy.getPoll(appVersion,
@@ -59,34 +72,19 @@ In your program logic, at the point you want to get the poll, call:
 
 In summary:
 
-`appVersion` (optional) is your app's version that can be used as a poll selection criteria. It's optional - set it as null if you don't want to send it.
+`appVersion` (optional) Set to null if you prefer not to send it.  Or you can choose to pass it. eg 1.0.35
 
-`level` (optional) if your app has a level concept you can pass it here. This should match with your poll setting. Or set it as 0 if you are not using it.
+`level` (optional) Set as 0 if you prefer not to send it. If your app has levels you can pass them here. eg 34 
 
-`session` (optional) This is used to keep track of how many times the user has started a polljoy session. If your app keeps track of how many times the app has been launched, you can pass that variable here. Otherwise leave it to 0 and the polljoy SDK will handle it.
+`session` (optional) Set it as 0 and the SDK will send it for you.  Or you can manually send it. eg 3 
 
-`timeSinceInstall`: If your app tracks how long the app has been installed, pass the variable here. Leave it to 0 will let polljoy does the job. (We count in days).
+`timeSinceInstall` (optional) Set it as 0 and the SDK will send it for you.  Or you can manually set it by sending a value for how long the app has been installed (by default, counted in days). eg 5
 
-`userType`: your app user type either **Pay** or **Non-Pay**. This is the `ENUM PJUserType` as defined in `Polljoy.java`
+`userType` Pass back either **Pay** or **Non-Pay**. This is the `ENUM PJUserType` as defined in `Polljoy.java`
 
-`tags`: If you app uses tags to select polls, you pass the tags here. Please remember this has to match your settings in admin panel. Tags are passed in the string format `TAGNAME,TAGNAME#RANGE` For example, if you want to ask the specific question to male users that are 18, you can put a tag like `MALE,AGE#18`
+`tags` (optional) Set to null if you aren't using them.  If your app uses tags to select polls, pass them in string format with as many as you want to send - `TAG,TAG, ... ,TAG`.  TAG is either in the format TAGNAME or TAGNAME:VALUE.  They should match what you defined in the web console. An example of sending back player gender, current energy and where the poll is being called from could be: `MALE,ENERGY#18,PVPMENU`
 
-`delegate`: the instance to handle all callbacks from polljoy SDK. The delegate should implement `PolljoyDelegate` as defined in `Polljoy.java`
-
-`NOTE: if you don’t use any poll selection criteria, you can simply call the following method and let the SDK handle everything.
-
-  ``` c#
-  // if you DON’T need to handle callbacks from Polljoy
-  // this will auto show the polls when all polls are ready
-      Polljoy.getPoll();
-  // ...
-  ```
-  OR
-  ``` c#
-  // if you need to handle callbacks from Polljoy
-    Polljoy.getPoll(delegate);
-  // ..
-  ```
+`delegate` (optional) Set to null if not needed. Delegate is the instance to handle all callbacks from polljoy SDK. If used, the delegate should implement `PolljoyDelegate` as defined in `Polljoy.java`
 
 ### Handle callbacks from SDK
 
