@@ -19,7 +19,7 @@ Polls are created and managed through our web interface - https://admin.polljoy.
 ###Start session 
 polljoy works in the background to avoid interrupting your app’s main thread.
 
-Each app starts a session and gets the **Session ID** for all communications to the API. To have best performance and integration, we recommend registering the session at startup. You’ll need your **App ID** (grab it in the web [admin panel](https://admin.polljoy.com/applications/app)
+Each app starts a session and gets the **Session ID** for all communications to the API. To have best performance and integration, we recommend registering the session at startup. You’ll need your **App ID** (grab it in the web [admin panel](https://admin.polljoy.com/applications/app))
 
  To start a session:
  1. On Application Start, call:
@@ -151,4 +151,6 @@ If you issue a virtual currency amount to user, you MUST implement this method t
  If the poll is not mandatory, the user can choose to skip the poll. You can handle this case or simply ignore it safely.
 
 -
-#### That's it!  Email us at help@polljoy.com if you have questions or suggestions!
+That's it!  Email us at help@polljoy.com if you have questions or suggestions!
+
+ps - love penguins? [good!](https://polljoy.com/world.html)
