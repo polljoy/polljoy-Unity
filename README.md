@@ -3,9 +3,8 @@
 In-app polls made easy. Just 2 API calls.
 
 
-#polljoy Unity Integration Guide
-
-Welcome friend! Let's add polljoy to your awesome game. This should take about 15 minutes.
+#Intro
+Hi friend! Let's add polljoy to your awesome Unity game. It's pretty simple, you should be up in minutes.
 
 Questions? - email help@polljoy.com and one of our devs will assist!
 
