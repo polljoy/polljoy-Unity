@@ -40,7 +40,7 @@ Each time you call `startSession`, the SDK will increase the session count by 1.
 
 Once the session is started, SDK will cache all app settings including the default image, border image and button image (if any) that you have setup in the [admin panel](https://admin.polljoy.com). After caching, there will be no operation until you request polls from polljoy service.
 
-###Get poll (simple version)
+###Get poll (simple)
 After you start the session, you can get polls any time and place you want!
 
 In your program logic, at the point you want to get the poll, call:
@@ -57,7 +57,7 @@ In your program logic, at the point you want to get the poll, call:
   ```
 `Note: these are simple version if you will only select polls based on session, timeSinceInstall and platform, or not have any seletion criteria.  If you want more than these, use the full version that follows.
 
-###Get poll (full version)
+###Get poll (full)
  ``` c#
  // ...
    Polljoy.getPoll(appVersion,
