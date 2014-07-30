@@ -1,26 +1,18 @@
 ![Picture](http://www.polljoy.com/assets/images/logo/polljoy-logo-github.png)
 
-In-app polls made easy. Integrate in 2 lines of code.
+In-app polls made easy. Just 2 API calls.
 
 
-#Polljoy Unity Integration Guide
+#polljoy Unity Integration Guide
 
-Welcome friend! This guide will get you started with polljoy, fast & easy.
+Welcome friend! Let's add polljoy to your awesome game. This should take about 15 minutes.
 
-Got questions?  Email us at help@polljoy.com
+Questions? - email help@polljoy.com and one of our devs will assist!
 
 -
-<b>Simple</b> – polljoy is designed to be simple for users and especially developers. Just 2 API calls, you can get your polls running.
-
-<b>Open</b> -The polljoy API is open. The SDK comes with all source code and a test app. You can simply import the SDK as-is to integrate the polljoy service and check all the source codes.
-
-<b>Easy</b> – polljoy is easy to use. Check out the test App in the SDK. Test with your own user id and app id. You can see how polljoy works.
-
-<b>Flexible</b> – the polljoy SDK comes with the required UI to present the poll and do all the tasks for you. But if you want to implement your own UI, you can. The poll data is open. Enjoy!
-
 
 # The polljoy Admin Console
-You can setup and manage all your polls through a web interface here https://admin.polljoy.com
+Polls are created and managed through a simple web interface - https://admin.polljoy.com
 
 
 # Setup your Unity Project
