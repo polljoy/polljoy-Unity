@@ -8,19 +8,19 @@ Hi friend! Let's add polljoy to your awesome Unity game. It's pretty simple, you
 
 Questions? - email help@polljoy.com and one of our devs will assist!
 
-# The polljoy Admin Console
-Polls are created and managed through a simple web interface - https://admin.polljoy.com
+#Web console
+Polls are created and managed through our web interface - https://admin.polljoy.com
 
-# Setup your Unity Project
+#Steps
 1. Download `Dist` folder to your local drive
 2. Import polljoy_SDK.unitypackage
-3. Import NGUI package (if you have not. polljoy SDK requires NGUI 2)
+3. Import NGUI package (if you haven't already. polljoy SDK requires NGUI 2)
 
-### Implement polljoy in Project
+###Implement polljoy in the project
 
- polljoy works in the background to avoid interruption to your app’s main thread.
+polljoy works in the background to avoid interruption to your app’s main thread.
 
- polljoy requires each app to start a session and obtain the **Session ID** for all communications to the API. To have best performance and integration, we recommend registering the session at application startup. You’ll need your **App ID** (they are available in the web [admin panel](https://admin.polljoy.com/applications/app)
+Each app starts a session and gets the **Session ID** for all communications to the API. To have best performance and integration, we recommend registering the session at startup. You’ll need your **App ID** (found in the web [admin panel](https://admin.polljoy.com/applications/app)
 
  To start a session:
  1. On Application Start, call:
