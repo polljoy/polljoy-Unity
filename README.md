@@ -9,14 +9,10 @@ Welcome friend! Let's add polljoy to your awesome game. This should take about 1
 
 Questions? - email help@polljoy.com and one of our devs will assist!
 
--
-
 # The polljoy Admin Console
 Polls are created and managed through a simple web interface - https://admin.polljoy.com
 
-
 # Setup your Unity Project
-
 1. Download `Dist` folder to your local drive
 2. Import polljoy_SDK.unitypackage
 3. Import NGUI package (if you have not. polljoy SDK requires NGUI 2)
