@@ -17,9 +17,9 @@ Polls are created and managed through our web interface - https://admin.polljoy.
 3. Import NGUI package (if you haven't already. polljoy SDK requires NGUI 2)
 
 ###Implement polljoy 
-polljoy works in the background to avoid interruption to your app’s main thread.
+polljoy works in the background to avoid interrupting your app’s main thread.
 
-Each app starts a session and gets the **Session ID** for all communications to the API. To have best performance and integration, we recommend registering the session at startup. You’ll need your **App ID** (found in the web [admin panel](https://admin.polljoy.com/applications/app)
+Each app starts a session and gets the **Session ID** for all communications to the API. To have best performance and integration, we recommend registering the session at startup. You’ll need your **App ID** (grab it in the web [admin panel](https://admin.polljoy.com/applications/app)
 
  To start a session:
  1. On Application Start, call:
@@ -34,7 +34,7 @@ Each app starts a session and gets the **Session ID** for all communications to 
 
  ```
 
- polljoy SDK will automatically handle all session control and all required information to get the correct poll based on your poll setup in admin panel and save your poll result for analysis. These includes the session ID, session count, time (days) since first call polljoy SDK, device ID, platform, OS version … etc.
+polljoy's SDK will automatically handle all session control and all required information to get the correct poll based on your poll setup in admin panel and save your poll result for analysis. These includes the session ID, session count, time (days) since first call polljoy SDK, device ID, platform, OS version … etc.
 
  Each time you call `startSession`, SDK will increase the session count by 1. So, you should only call it once for each app launch to get the session count correct.
 
