@@ -16,7 +16,7 @@ Polls are created and managed through our web interface - https://admin.polljoy.
 2. Import polljoy_SDK.unitypackage
 3. Import NGUI package (if you haven't already. polljoy SDK requires NGUI 2)
 
-###Implement polljoy 
+###Start session 
 polljoy works in the background to avoid interrupting your app’s main thread.
 
 Each app starts a session and gets the **Session ID** for all communications to the API. To have best performance and integration, we recommend registering the session at startup. You’ll need your **App ID** (grab it in the web [admin panel](https://admin.polljoy.com/applications/app)
@@ -34,17 +34,16 @@ Each app starts a session and gets the **Session ID** for all communications to 
 
  ```
 
-polljoy's SDK will automatically handle all session control and all required information to get the correct poll based on your poll setup in admin panel and save your poll result for analysis. These includes the session ID, session count, time (days) since first call polljoy SDK, device ID, platform, OS version … etc.
+The SDK will automatically handle all session control and required information to get the correct poll based on your poll setup in admin panel and save your poll result for analysis. These includes the session ID, session count, time (days) since first call polljoy SDK, device ID, platform, OS version … etc.
 
- Each time you call `startSession`, SDK will increase the session count by 1. So, you should only call it once for each app launch to get the session count correct.
+Each time you call `startSession`, the SDK will increase the session count by 1. So, you should only call it once for each launch to get the session count correct.
 
- Once the session is started, SDK will cache all app settings including the default image, border image and button image (if any) that you have setup in the [admin panel](https://admin.polljoy.com). After caching, there will be no operation until you request polls from polljoy service.
+Once the session is started, SDK will cache all app settings including the default image, border image and button image (if any) that you have setup in the [admin panel](https://admin.polljoy.com). After caching, there will be no operation until you request polls from polljoy service.
 
-### Get polls
+###Get poll
+After you start the session, you can get polls any time and place you want!
 
-After you started the session, you can get polls at any time and place you want!
-
-In your program logic, at the point you want to get poll, call:
+In your program logic, at the point you want to get the poll, call:
 
  ``` c#
  // ...
@@ -60,11 +59,11 @@ In your program logic, at the point you want to get poll, call:
 
 In summary:
 
-`appVersion`: your app's version to be used as a poll selection criteria. This should match with your poll setting. Or set it as nil if you are not using.
+`appVersion` (optional) is your app's version that can be used as a poll selection criteria. It's optional - set it as null if you don't want to send it.
 
-`level`: if your app is a game app, this is your game level. This should match with your poll setting. Or set it as 0 if you are not using it.
+`level` (optional) if your app has a level concept you can pass it here. This should match with your poll setting. Or set it as 0 if you are not using it.
 
-`session`: This is used to keep track of how many times the user has started a polljoy session. If your app keeps track of how many times the app has been launched, you can pass that variable here. Otherwise leave it to 0 and the polljoy SDK will handle it.
+`session` (optional) This is used to keep track of how many times the user has started a polljoy session. If your app keeps track of how many times the app has been launched, you can pass that variable here. Otherwise leave it to 0 and the polljoy SDK will handle it.
 
 `timeSinceInstall`: If your app tracks how long the app has been installed, pass the variable here. Leave it to 0 will let polljoy does the job. (We count in days).
 
