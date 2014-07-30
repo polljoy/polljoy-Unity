@@ -4,7 +4,7 @@ In-app polls made easy. Just 2 API calls.
 
 
 #Intro
-Hi friend! Let's add polljoy to your awesome Unity game. It's pretty simple, you should be up in minutes.
+Hi friend! Let's add polljoy to your awesome Unity game. It's simple, you'll be up in minutes.
 
 Questions? - email help@polljoy.com and one of our devs will assist!
 
