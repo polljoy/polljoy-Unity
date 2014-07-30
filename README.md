@@ -86,33 +86,32 @@ In summary:
 
 `delegate` (optional) Set to null if not needed. Delegate is the instance to handle all callbacks from polljoy SDK. If used, the delegate should implement `PolljoyDelegate` as defined in `Polljoy.java`
 
-### Handle callbacks from SDK
+### Callbacks
 
-polljoy will inform delegate at different stages when polls are downloaded, ready to show, user responded etc. App can optionally implement the delegate methods to control the app logic. The delegate methods are (defined in PolljoyDelegate.cs):
-
+polljoy will inform delegate at different stages when the polls are downloaded, ready to show, user responded etc. The game can optionally implement the delegate methods to control the app logic. The delegate methods are (defined in PolljoyDelegate.cs):
 
  ``` c#
  void PJPollNotAvailable(string status);
  ```
 
-When there is no poll match with your selection criteria or no more polls to show in the current session.
+When there is no poll matching your selection criteria or no more polls to show in the current session.
 
  ``` c#
  void PJPollIsReady(ArrayList<PJPoll> polls);
  ```
 
-After you request for poll and poll/s is/are ready to show (including all defined images are downloaded). Friendly tip - If you are displaying the poll in the middle of an active game or app session that needs real time control, consider to pause your app before presenting the poll UI as needed.
+When poll/s is/are ready to show (including all associated images). Friendly tip - If you are displaying the poll in the middle of an active game or app session that needs real time control, consider to pause your app before presenting the poll UI as needed. 
 
-polls array returned are all the matched polls for the request. Please refer `PJPoll.h` for the data structure.
+The polls array returned are all the matched polls for the request. Please refer `PJPoll.h` for the data structure.
 When you’re ready to present the poll, call:
 
  ``` c#
  Polljoy.showPoll();
  ```
 
-This will present the polljoy UI according to your app color and poll settings. Then polljoy SDK will handle all the remaining tasks for you. These include handling the user’s response, informing delegate for any virtual amount user received, upload result to polljoy service … etc.
+This will present the polljoy UI according to your app style and poll settings. Then the SDK will handle all the remaining tasks for you. These include handling the user’s response, informing delegate for any virtual amount user received, uploading the result to the console … etc.
 
-We highly recommend you implement this delegate method so that you know polls are ready and call polljoy SDK to show the poll or do whatever control you need.
+We recommend you implement this delegate method so you know when polls are ready and call polljoy SDK to show the poll or do whatever control you need.
 
  ``` c#
  void PJPollWillShow(PJPoll poll);
@@ -130,26 +129,26 @@ The polljoy poll UI is ready and has shown. You can do whatever UI control as ne
  void PJPollWillDismiss(PJPoll poll);
  ```
 
-The polljoy poll UI is finished and will dismiss. You can do whatever UI control as needed. Or simply ignore this implementation. You can prepare your own UI before resuming your app before the polljoy poll UI is dismissed.
+The polljoy poll UI is finished and will dismiss. You can do whatever UI control as needed. Or simply ignore this implementation. You can prepare your own UI before resuming your game before the polljoy poll UI is dismissed.
 
  ``` c#
  vvoid PJPollDidDismiss(PJPoll poll);
  ```
 
-The polljoy poll UI is finished and has dismissed. You can do whatever UI control as needed. Or simply ignore this implementation. You can prepare your own UI to resume your app before the polljoy UI is dismissed. This is the last callback from polljoy and all polls are completed. You should resume your app if you have paused.
+The polljoy poll UI is finished and has dismissed. You can do whatever UI control as needed. Or simply ignore this implementation. You can prepare your own UI to resume your game before the polljoy UI is dismissed. This is the last callback from polljoy and all polls are completed. You should resume your game if you have paused.
 
  ``` c#
  void PJPollDidResponded(PJPoll poll);
  ```
 
-User has responded to the poll. The poll will contain all the poll data including user’s responses. You can ignore this (the results are displayed in the polljoy.com admin console and able to be exported) or use it as you wish.
-If you issue a virtual currency amount to user, you MUST implement this method to handle the virtual amount issued (especially if your app is game). This is the only callback from SDK that informs the app the virtual amount that the user collected.
+User has responded to the poll. The poll will contain all the poll data including user’s responses. You can ignore this (the results are displayed in the web admin console and able to be exported) or use it as you wish.
+If you issue a virtual currency amount to user, you MUST implement this method to handle the virtual amount issued. This is the only callback from SDK that informs the app the virtual amount that the user collected.
 
  ``` c#
  void PJPollDidSkipped(PJPoll poll);
  ```
 
- If the poll is not mandatory, user can choose to skip the poll. You can handle this case or simply ignore it safely.
+ If the poll is not mandatory, the user can choose to skip the poll. You can handle this case or simply ignore it safely.
 
 -
-#### Got questions? Email us at help@polljoy.com
+#### That's it!  Email us at help@polljoy.com if you have questions or suggestions!
