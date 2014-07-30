@@ -16,8 +16,7 @@ Polls are created and managed through our web interface - https://admin.polljoy.
 2. Import polljoy_SDK.unitypackage
 3. Import NGUI package (if you haven't already. polljoy SDK requires NGUI 2)
 
-###Implement polljoy in the project
-
+###Implement polljoy 
 polljoy works in the background to avoid interruption to your app’s main thread.
 
 Each app starts a session and gets the **Session ID** for all communications to the API. To have best performance and integration, we recommend registering the session at startup. You’ll need your **App ID** (found in the web [admin panel](https://admin.polljoy.com/applications/app)
