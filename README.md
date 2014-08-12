@@ -12,7 +12,7 @@ Questions? - email help@polljoy.com and one of our devs will assist!
 Polls are created and managed through our web interface - https://admin.polljoy.com
 
 #Steps
-1. Import NGUI package (if you haven't already. polljoy SDK requires NGUI 3)
+1. Import NGUI package (if you are not using NGUI in your project. polljoy SDK requires NGUI 3 to work properly)
 2. Download the archive to your local drive and unzip it
 3. Locate "polljoy_SDK.unitypackage" in the "Dist" folder, and import it to your Unity project. To start using polljoy, please continue reading "Start session" and "Get poll" below.
 
