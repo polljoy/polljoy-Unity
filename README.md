@@ -12,9 +12,12 @@ Questions? - email help@polljoy.com and one of our devs will assist!
 Polls are created and managed through our web interface - https://admin.polljoy.com
 
 #Steps
-1. Download `Dist` folder to your local drive
-2. Import polljoy_SDK.unitypackage
-3. Import NGUI package (if you haven't already. polljoy SDK requires NGUI 2)
+1. Import NGUI package (if you haven't already. polljoy SDK requires NGUI 3)
+2. Download the archive to your local drive and unzip it
+3. Locate "polljoy_SDK.unitypackage" in the "Dist" folder, and import it to your Unity project. To start using polljoy, please continue reading "Start session" and "Get poll" below.
+
+(optional)
+4. Import the "polljoy_testapp.unitypackage" in the "TestApp" folder. The test app allows you to try out a few polls. Open the "TestAppScene" and you are good to go!
 
 ###Start session 
 polljoy works in the background to avoid interrupting your app’s main thread.
