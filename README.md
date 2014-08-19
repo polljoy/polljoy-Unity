@@ -43,6 +43,18 @@ Each time you call `startSession`, the SDK will increase the session count by 1.
 
 Once the session is started, SDK will cache all app settings including the default image, border image and button image (if any) that you have setup in the [admin panel](https://admin.polljoy.com). After caching, there will be no operation until you request polls from polljoy service.
 
+By default the SDK will assign an unique device ID to each device, if you would however like to override this and assign the device ID yourself, call this method instead
+
+ ``` c#
+
+ // ...
+ public class ApplicationStart : MonoBehaviour
+     // ...
+     Polljoy.startSession("YOUR_APP_ID", "DEVICE_ID");
+     // ...
+
+ ```
+
 ###Get poll (simple)
 After you start the session, you can get polls any time and place you want!
 
@@ -58,7 +70,7 @@ In your program logic, at the point you want to get the poll, call:
     Polljoy.getPoll(delegate);
   // if you want to handle callbacks from polljoy
   ```
-`Note: these are simple version if you will only select polls based on session, timeSinceInstall and platform, or not have any seletion criteria.  If you want more than these, use the full version that follows.
+`Note: The above two methods are simplified version if you do not have any selection criteria.  If you want to select specific polls to the users based on session, timeSinceInstall, platform, or more , please use the full method call below.
 
 ###Get poll (full)
  ``` c#
@@ -79,9 +91,9 @@ In summary:
 
 `level` (optional) Set as 0 if you prefer not to send it. If your app has levels you can pass them here. eg 34 
 
-`session` (optional) Set it as 0 and the SDK will send it for you.  Or you can manually send it. eg 3 
+`session` (optional) Set it as "Polljoy.Session" and the SDK will count it for you.  Or you can manually send it. eg 3 
 
-`timeSinceInstall` (optional) Set it as 0 and the SDK will send it for you.  Or you can manually set it by sending a value for how long the app has been installed (by default, counted in days). eg 5
+`timeSinceInstall` (optional) Set it as "PolljoyCore.getTimeSinceInstall()" and the SDK will count it for you.  Or you can manually set it by sending a value for how long the app has been installed (by default, counted in days). eg 5
 
 `userType` Pass back either the user type **Pay** or **Non-Pay**. This is the class `PJUserType` as defined in `PJUserType.cs`
 
@@ -91,21 +103,22 @@ In summary:
 
 ### Callbacks
 
+To use the delegate and callbacks, please extend the method "PolljoyDelegate" and implement the callback methods.
 polljoy will inform delegate at different stages when the polls are downloaded, ready to show, user responded etc. The game can optionally implement the delegate methods to control the app logic. The delegate methods are (defined in PolljoyDelegate.cs):
 
  ``` c#
- void PJPollNotAvailable(string status);
+ void PJPollNotAvailable(PJResponseStatus status);
  ```
 
-When there is no poll matching your selection criteria or no more polls to show in the current session.
+When there is no poll matching your selection criteria or no more polls to show in the current session. The error code is passed back as a enum.
 
  ``` c#
- void PJPollIsReady(ArrayList<PJPoll> polls);
+ void PJPollIsReady(List<PJPoll> polls);
  ```
 
 When poll/s is/are ready to show (including all associated images). Friendly tip - If you are displaying the poll in the middle of an active game or app session that needs real time control, consider to pause your game before presenting the poll UI as needed. 
 
-The polls array returned are all the matched polls for the request. Please refer `PJPoll.h` for the data structure.
+The polls array returned are all the matched polls for the request. Please refer `PJPoll.cs` for the data structure.
 When you’re ready to present the poll, call:
 
  ``` c#
